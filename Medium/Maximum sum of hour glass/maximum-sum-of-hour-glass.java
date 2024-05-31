@@ -32,29 +32,24 @@ class GFG {
 
 class Solution {
     int findMaxSum(int n, int m, int mat[][]) {
-        // Initialize maxSum with the minimum integer value
         int maxSum = Integer.MIN_VALUE;
         
-        // Check if the matrix is large enough to contain an hourglass
         if (n < 3 || m < 3) {
             return -1;
         }
         
-        // Iterate over the matrix to find the maximum hourglass sum
         for (int i = 0; i <= n - 3; i++) {
             for (int j = 0; j <= m - 3; j++) {
                 int sum = mat[i][j] + mat[i][j + 1] + mat[i][j + 2]
                         + mat[i + 1][j + 1]
                         + mat[i + 2][j] + mat[i + 2][j + 1] + mat[i + 2][j + 2];
                 
-                // Update maxSum if current sum is greater
                 if (sum > maxSum) {
                     maxSum = sum;
                 }
             }
         }
         
-        // Return maxSum or -1 if no hourglass is found
         return maxSum == Integer.MIN_VALUE ? -1 : maxSum;
     }
 }
