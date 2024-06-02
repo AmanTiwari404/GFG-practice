@@ -22,7 +22,7 @@ class Solution {
     static final int MOD = 1000000007;
     static int firstElement(int n) {
         int[][] A = {{1, 1}, {1, 0}};
-        int[][] result = {{1, 0}, {0, 1}};  // Identity matrix
+        int[][] result = {{1, 0}, {0, 1}}; 
 
         while (n > 0) {
             if (n % 2 == 1) {
@@ -32,7 +32,7 @@ class Solution {
             n /= 2;
         }
 
-        return result[1][0];  // a10 element
+        return result[1][0];  
     }
 
     static int[][] multiplyMatrix(int[][] A, int[][] B) {
