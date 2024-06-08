@@ -22,19 +22,19 @@ class ExtraElement {
 /*Complete the function below*/
 class Solution {
     public int findExtra(int n, int arr1[], int arr2[]) {
-        int low = 0;
-        int high = n - 1;
+        int i = 0;
+        int j = n - 1;
         
-        while (low < high) {
-            int mid = low + (high - low) / 2;
+        while (i < j) {
+            int mid = i + (j - i) / 2;
             
             if (arr1[mid] == arr2[mid]) {
-                low = mid + 1;
+                i = mid + 1;
             } else {
-                high = mid;
+                j = mid;
             }
         }
         
-        return low; 
+        return i; 
     }
 }
