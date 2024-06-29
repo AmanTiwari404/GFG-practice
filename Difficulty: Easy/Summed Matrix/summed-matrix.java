@@ -29,12 +29,10 @@ class Solution {
         long lowerBound = Math.max(1, q - n);
         long upperBound = Math.min(n, q - 1);
         
-        // Check if the range is valid
         if (upperBound < lowerBound) {
             return 0;
         }
         
-        // Calculate the count of valid cells
         return upperBound - lowerBound + 1;
     }
 }
