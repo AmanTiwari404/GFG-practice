@@ -20,6 +20,8 @@ class GFG {
             ArrayList<Integer> ans = ob.spirallyTraverse(matrix);
             for (Integer val : ans) System.out.print(val + " ");
             System.out.println();
+
+            System.out.println("~");
         }
     }
 }
@@ -28,38 +30,42 @@ class GFG {
 
 class Solution {
     // Function to return a list of integers denoting spiral traversal of matrix.
-    public ArrayList<Integer> spirallyTraverse(int matrix[][]) {
+    public ArrayList<Integer> spirallyTraverse(int mat[][]) {
         ArrayList<Integer> result = new ArrayList<>();
-        if (matrix == null || matrix.length == 0) {
+        if (mat == null || mat.length == 0 || mat[0].length == 0) {
             return result;
         }
         
-        int top = 0;
-        int bottom = matrix.length - 1;
-        int left = 0;
-        int right = matrix[0].length - 1;
+        int n = mat.length;    
+        int m = mat[0].length; 
+        
+        int top = 0, bottom = n - 1, left = 0, right = m - 1;
         
         while (top <= bottom && left <= right) {
+            
             for (int i = left; i <= right; i++) {
-                result.add(matrix[top][i]);
+                result.add(mat[top][i]);
             }
             top++;
             
+        
             for (int i = top; i <= bottom; i++) {
-                result.add(matrix[i][right]);
+                result.add(mat[i][right]);
             }
             right--;
             
+        
             if (top <= bottom) {
                 for (int i = right; i >= left; i--) {
-                    result.add(matrix[bottom][i]);
+                    result.add(mat[bottom][i]);
                 }
                 bottom--;
             }
             
+            
             if (left <= right) {
                 for (int i = bottom; i >= top; i--) {
-                    result.add(matrix[i][left]);
+                    result.add(mat[i][left]);
                 }
                 left++;
             }
@@ -68,4 +74,3 @@ class Solution {
         return result;
     }
 }
-
