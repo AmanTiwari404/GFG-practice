@@ -9,12 +9,13 @@ class GFG {
         int T = Integer.parseInt(br.readLine().trim());
         while (T-- > 0) {
             String s1 = br.readLine();
-            String[] S = s1.split(" ");
-            String s = S[0];
-            String t = S[1];
+            String s2 = br.readLine();
+
             Solution ob = new Solution();
-            int ans = ob.editDistance(s, t);
+            int ans = ob.editDistance(s1, s2);
             System.out.println(ans);
+
+            System.out.println("~");
         }
     }
 }
@@ -23,30 +24,26 @@ class GFG {
 
 
 class Solution {
-    public int editDistance(String str1, String str2) {
-        int m = str1.length();
-        int n = str2.length();
+    public int editDistance(String s1, String s2) {
+        int m = s1.length();
+        int n = s2.length();
         
-        int[][] dp = new int[m+1][n+1];
+        int dp[][] = new int[m + 1][n + 1];
         
         for (int i = 0; i <= m; i++) {
             for (int j = 0; j <= n; j++) {
-            
                 if (i == 0) {
                     dp[i][j] = j; 
-                }
-                else if (j == 0) {
+                } else if (j == 0) {
                     dp[i][j] = i; 
-                }
-            
-                else if (str1.charAt(i-1) == str2.charAt(j-1)) {
-                    dp[i][j] = dp[i-1][j-1];
-                }
-            
-                else {
-                    dp[i][j] = 1 + Math.min(dp[i][j-1], 
-                                    Math.min(dp[i-1][j], 
-                                             dp[i-1][j-1])); 
+                } else if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1]; 
+                } else {
+                    dp[i][j] = 1 + Math.min(
+                        dp[i - 1][j], 
+                        Math.min(dp[i][j - 1], 
+                                 dp[i - 1][j - 1]) 
+                    );
                 }
             }
         }
